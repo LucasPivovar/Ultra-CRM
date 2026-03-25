@@ -24,14 +24,14 @@
                 </div>
             </div>
             <nav class="nav-links">
-                <li class="nav-item"><a href="index.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Visão Geral</a></li>
+                <li class="nav-item"><a href="dashboard.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Visão Geral</a></li>
                 <li class="nav-item"><a href="leads.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> Leads</a></li>
                 <li class="nav-item"><a href="campanhas.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg> Campanhas</a></li>
                 <li class="nav-item"><a href="redirecionamento.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> Redirecionamento</a></li>
                 <li class="nav-item"><a href="usuarios.html" class="nav-link active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><polyline points="16 11 18 13 22 9"></polyline></svg> Usuários</a></li>
             </nav>
             <div class="sidebar-footer">
-                <a href="auth/login.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg> Sair</a>
+                <a href="index.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg> Sair</a>
             </div>
         </aside>
 
@@ -62,7 +62,7 @@
                     <button class="btn btn-primary" onclick="openModal('newUserModal')">+ Convidar Usuário</button>
                 </div>
 
-                <div class="p-stats-grid">
+                <!-- <div class="p-stats-grid">
                     <div class="p-stat-card p-card-white">
                         <div class="p-stat-info">
                             <span class="p-stat-title">Equipe Total</span>
@@ -118,7 +118,7 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="card-table">
                     <div class="card-header">
@@ -133,7 +133,7 @@
                                     <th>E-mail</th>
                                     <th>Cargo</th>
                                     <th>Último Acesso</th>
-                                    <th>Status</th>
+                                    <th>Acesso</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -147,7 +147,7 @@
                                     <td>pato@ultracrm.com</td>
                                     <td><span class="badge">Administrador</span></td>
                                     <td>Hoje, 10:45</td>
-                                    <td><span class="badge badge-green">Online</span></td>
+                                    <td><span class="badge badge-green">Permitido</span></td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -157,9 +157,9 @@
                                         </div>
                                     </td>
                                     <td>ana@ultracrm.com</td>
-                                    <td><span class="badge">Vendedor</span></td>
+                                    <td><span class="badge">Operacional</span></td>
                                     <td>Ontem, 16:20</td>
-                                    <td><span class="badge badge-yellow">Ausente</span></td>
+                                    <td><span class="badge badge-red">Não permitido</span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -192,17 +192,14 @@
                         <label for="userRole">Cargo / Permissões</label>
                         <select id="userRole" class="form-control">
                             <option value="Administrador">Administrador</option>
-                            <option value="Vendedor">Vendedor</option>
-                            <option value="Gerente">Gerente</option>
-                            <option value="Suporte">Suporte</option>
+                            <option value="Operacional">Operacional</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="userStatus">Status Inicial</label>
                         <select id="userStatus" class="form-control">
-                            <option value="Online">Online</option>
-                            <option value="Ausente">Ausente</option>
-                            <option value="Offline">Offline</option>
+                            <option value="Permitido">Permitido</option>
+                            <option value="Não permitido">Não permitido</option>
                         </select>
                     </div>
                 </form>
