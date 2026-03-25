@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação em Duas Etapas - UltraCRM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #F9FAFB;
+            --bg-surface: #FFFFFF;
+            --text-main: #111827;
+            --text-muted: #6B7280;
+            --border-color: #E5E7EB;
+            --primary: #2563EB;
+            --primary-hover: #1D4ED8;
+            --focus-ring: rgba(37, 99, 235, 0.2);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-body); color: var(--text-main); display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+        .auth-container { background: var(--bg-surface); width: 100%; max-width: 400px; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); border: 1px solid var(--border-color); }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-align: center; margin-bottom: 2rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; text-decoration: none; }
+        .logo svg { width: 24px; height: 24px; }
+        .header { text-align: center; margin-bottom: 2rem; }
+        .header h1 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .header p { color: var(--text-muted); font-size: 0.875rem; }
+        .code-input-container { display: flex; justify-content: space-between; gap: 0.5rem; margin-bottom: 2rem; }
+        .code-input-container input { width: 45px; height: 50px; text-align: center; font-size: 1.25rem; font-weight: 600; border: 1px solid var(--border-color); border-radius: 8px; outline: none; transition: all 0.2s; background-color: var(--bg-surface); color: var(--text-main); }
+        .code-input-container input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--focus-ring); }
+        .btn-primary { width: 100%; background: var(--primary); color: white; border: none; padding: 0.75rem; border-radius: 8px; font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: background 0.2s; margin-bottom: 1.5rem; }
+        .btn-primary:hover { background: var(--primary-hover); }
+        .resend-link { display: block; text-align: center; font-size: 0.875rem; color: var(--text-muted); text-decoration: none; font-weight: 500; }
+        .resend-link span { color: var(--primary); cursor: pointer; }
+        .resend-link span:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <a href="login.html" class="logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            UltraCRM
+        </a>
+        <div class="header">
+            <h1>Verificação em Duas Etapas</h1>
+            <p>Enviamos um código de 6 dígitos para o seu e-mail.</p>
+        </div>
+        <form action="../index.html">
+            <div class="code-input-container">
+                <input type="text" maxlength="1" pattern="[0-9]" required>
+                <input type="text" maxlength="1" pattern="[0-9]" required>
+                <input type="text" maxlength="1" pattern="[0-9]" required>
+                <input type="text" maxlength="1" pattern="[0-9]" required>
+                <input type="text" maxlength="1" pattern="[0-9]" required>
+                <input type="text" maxlength="1" pattern="[0-9]" required>
+            </div>
+            <button type="submit" class="btn-primary">Verificar</button>
+            <div class="resend-link">Não recebeu o código? <span>Reenviar</span></div>
+        </form>
+    </div>
+    <script>
+        const inputs = document.querySelectorAll('.code-input-container input');
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                if (e.target.value.length > 0 && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && e.target.value.length === 0 && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
